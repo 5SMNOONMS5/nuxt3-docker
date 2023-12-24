@@ -1,0 +1,13 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: ${DOCKER_FILE}
+      args:
+        - NODE_VERSION=${DOCKER_NODE_VERSION}
+    # 把本機的 port 跟 container 的 port 綁定
+    ports:
+      - '${DOCKER_HOST_MACHINE_PORT}:3000'
+    volumes:
+      - .:/app
