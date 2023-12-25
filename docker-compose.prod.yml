@@ -11,3 +11,6 @@ services:
       - '${DOCKER_HOST_MACHINE_PORT}:3000'
     volumes:
       - .:/app
+    command: node .output/server/index.mjs
+    tty: true
+    stdin_open: true

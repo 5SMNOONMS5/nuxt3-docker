@@ -1,19 +1,14 @@
-ARG NODE_VERSION
+#!/bin/bash
 
-FROM node:${NODE_VERSION}-slim as base
+# 拿到當前路徑
+CURRENT_DIRECTORY=$(dirname "$0")
 
-ARG PORT=3000
+echo "CURRENT_DIRECTORY: $CURRENT_DIRECTORY"
 
-WORKDIR /app
+# 回到根路徑
+cd $CURRENT_DIRECTORY/../ || exit
 
-# ---
-# Build stage
-FROM base as build
-
-# Copy package.json
-COPY package.json .
-COPY yarn.lock .
-
+# 安裝 yarn
 # --prefer-offline
 #
 #   use network only if dependencies are not available in local cache
@@ -29,21 +24,11 @@ COPY yarn.lock .
 # --production=false
 #
 #   install devDependencies
-RUN yarn install \
+yarn install \
   --prefer-offline \
   --frozen-lockfile \
   --non-interactive \
   --production=false
 
-COPY . .
-
-RUN yarn build
-
-# ---
-# Run stage
-FROM base
-
-# Copy only the files needed to run the app
-COPY --from=build /app .
-
-CMD [ "node", ".output/server/index.mjs" ]
+# 執行 yarn build
+yarn build
