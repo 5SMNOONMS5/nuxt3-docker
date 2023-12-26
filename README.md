@@ -33,3 +33,11 @@ Enjoy!
 ```
 cd app && yarn dev
 ```
+
+# Production
+
+Build for production
+
+```bash
+docker compose -f docker-compose.prod.yml up --build -d
+```
