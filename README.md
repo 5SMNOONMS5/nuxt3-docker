@@ -47,7 +47,7 @@ yarn preview
 Build for production
 
 ```bash
-dc down && dc build --no-cache && dc -f docker-compose.prod.yml up -d
+dc -f docker-compose.prod.yml up -d --build 
 ```
 
 
