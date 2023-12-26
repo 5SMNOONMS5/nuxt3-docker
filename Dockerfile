@@ -1,6 +1,6 @@
-ARG NODE_VERSION
-
 FROM node:${NODE_VERSION}-slim as base
+
+MAINTAINER "example@gmail.com"
 
 WORKDIR /app
 
