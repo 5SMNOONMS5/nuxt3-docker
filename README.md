@@ -13,7 +13,7 @@ cp .env.example .env
 Up the containers with docker-compose and build the images. 
 
 ```bash
-dc -f docker-compose.yml up -d --build frontend
+docker-compose -f docker-compose.yml up -d --build frontend
 ```
 
 Go inside the container
@@ -47,7 +47,7 @@ yarn preview
 Build for production
 
 ```bash
-dc -f docker-compose.prod.yml up -d --build 
+docker-compose -f docker-compose.prod.yml up -d --build 
 ```
 
 
