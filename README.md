@@ -1,6 +1,8 @@
 # Nuxt 3 Minimal Docker Template with Nginx version
 
-[Article: Here](https://medium.com/@tasb00429/nuxt3-with-docker-%E3%84%A7-358e6a253d61)
+[Build nginx article](https://tasb00429.medium.com/nuxt3-with-docker-nginx-deploy-%E4%BA%8C-29d4b75f5ae9)
+
+[Build without nginx article](https://tasb00429.medium.com/nuxt3-with-docker-nginx-deploy-%E4%BA%8C-29d4b75f5ae9)
 
 ## Setup during development
 
