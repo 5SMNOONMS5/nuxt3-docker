@@ -11,8 +11,6 @@ services:
     ports:
       # 把本機的 port 跟 container 的 port 綁定
       - '${DOCKER_HOST_MACHINE_PORT}:3000'
-    volumes:
-      - .:/app
     tty: true
     stdin_open: true
 
