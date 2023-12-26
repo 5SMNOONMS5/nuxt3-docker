@@ -1,8 +1,8 @@
-# Nuxt 3 Minimal Docker Template 
+# Nuxt 3 Minimal Docker Template with Nginx version
 
 [Article: Here](https://medium.com/@tasb00429/nuxt3-with-docker-%E3%84%A7-358e6a253d61)
 
-## Setup
+## Setup during development
 
 Copy the `.env.example` file to `.env` and edit the variables to your liking.
 
@@ -10,10 +10,10 @@ Copy the `.env.example` file to `.env` and edit the variables to your liking.
 cp .env.example .env
 ```
 
-Up the containers with docker-compose and build the images.
+Up the containers with docker-compose and build the images. 
 
 ```bash
-docker-compose up -d --build
+dc -f docker-compose.yml up -d --build frontend
 ```
 
 Go inside the container
@@ -22,22 +22,39 @@ Go inside the container
 docker-compose exec frontend bash
 ```
 
-Build the project, Select yarn for package manager
+Install dependencies
 
 ```bash
-cd / && npx nuxi@latest init app -f 
+# yarn
+yarn install
 ```
 
-Enjoy!
+Start develop the project on `http://localhost:3000`:
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
-```
-cd app && yarn dev
+```bash
+yarn dev
 ```
 
-# Production
+Locally preview production build:
+
+```bash    
+yarn preview
+```
+
+# Build for Production with Nginx
 
 Build for production
 
 ```bash
-docker compose -f docker-compose.prod.yml up --build -d
+dc down && dc build --no-cache && dc -f docker-compose.prod.yml up -d
 ```
+
+
+
+
+
+
+
+
+
