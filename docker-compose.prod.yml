@@ -4,6 +4,7 @@ services:
     container_name: frontend
     restart: on-failure
     build:
+      dockerfile: Dockerfile/prod.Dockerfile
       context: .
       args:
         - NODE_VERSION=${DOCKER_NODE_VERSION}
@@ -12,6 +13,13 @@ services:
       - '${DOCKER_HOST_MACHINE_PORT}:3000'
     volumes:
       - .:/app
-    command: node .output/server/index.mjs
     tty: true
     stdin_open: true
+
+  # nginx
+  nginx:
+    container_name: nginx
+    restart: on-failure
+    build: ./nginx
+    ports:
+      - '80:80'
